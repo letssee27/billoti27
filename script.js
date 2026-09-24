@@ -912,8 +912,6 @@ mobileLinks.forEach(link => {
   });
 
 });
-
-
 /* =========================
 VIDEO MEMORY 01
 ========================= */
@@ -936,96 +934,112 @@ was playing before the video opened.
 */
 let bgMusicWasPlayingBeforeVideo = false;
 
+
 /* Open video */
 
 if (birthdayVideoCard) {
 
-birthdayVideoCard.addEventListener("click", () => {
+  birthdayVideoCard.addEventListener("click", async () => {
 
+    /*
+    Remember the current music state.
+    We only resume it if it was actually
+    playing before the video started.
+    */
+    bgMusicWasPlayingBeforeVideo = !music.paused;
 
-/*
-  Remember the current music state.
-  We only resume it if it was actually
-  playing before the video started.
-*/
-bgMusicWasPlayingBeforeVideo = !music.paused;
+    /* Pause birthday background music */
+    if (!music.paused) {
+      music.pause();
+    }
 
-/* Pause birthday background music */
-if (!music.paused) {
-  music.pause();
+    /* Open video lightbox */
+    videoLightbox.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+
+    /*
+    Reset and reload the video before playing.
+    This helps when the video is played again
+    without refreshing the page.
+    */
+    birthdayVideo.pause();
+    birthdayVideo.currentTime = 0;
+    birthdayVideo.load();
+
+    try {
+
+      await birthdayVideo.play();
+
+    } catch (error) {
+
+      console.log("Video playback error:", error);
+
+    }
+
+  });
+
 }
 
-/* Open video lightbox */
-videoLightbox.classList.add("open");
-
-document.body.style.overflow = "hidden";
-
-/* Start video from beginning */
-birthdayVideo.currentTime = 0;
-
-birthdayVideo.play().catch(() => {});
-
-
-});
-
-}
 
 /* Close video */
 
 function closeBirthdayVideo() {
 
-/* Stop video */
-birthdayVideo.pause();
+  /* Stop video */
+  birthdayVideo.pause();
 
-birthdayVideo.currentTime = 0;
+  /* Reset video */
+  birthdayVideo.currentTime = 0;
 
-/* Close lightbox */
-videoLightbox.classList.remove("open");
+  /* Close lightbox */
+  videoLightbox.classList.remove("open");
 
-document.body.style.overflow = "";
+  document.body.style.overflow = "";
 
-/*
-Resume background music only if it was
-playing before the video opened.
-*/
-if (bgMusicWasPlayingBeforeVideo) {
+  /*
+  Resume background music only if it was
+  playing before the video opened.
+  */
+  if (bgMusicWasPlayingBeforeVideo) {
 
+    music.play().catch((error) => {
+      console.log("Music playback error:", error);
+    });
 
-music.play().catch(() => {});
+  }
 
+  bgMusicWasPlayingBeforeVideo = false;
 
 }
 
-bgMusicWasPlayingBeforeVideo = false;
-
-}
 
 /* Close button */
 
 if (closeVideo) {
 
-closeVideo.addEventListener(
-"click",
-closeBirthdayVideo
-);
+  closeVideo.addEventListener(
+    "click",
+    closeBirthdayVideo
+  );
 
 }
+
 
 /* Click outside the video */
 
 if (videoLightbox) {
 
-videoLightbox.addEventListener("click", (e) => {
+  videoLightbox.addEventListener("click", (e) => {
 
+    if (e.target === videoLightbox) {
+      closeBirthdayVideo();
+    }
 
-if (e.target === videoLightbox) {
-  closeBirthdayVideo();
-}
-
-
-});
+  });
 
 }
+
 
 /*
 When the video finishes naturally,
@@ -1034,23 +1048,25 @@ close it and resume background music.
 
 birthdayVideo.addEventListener("ended", () => {
 
-closeBirthdayVideo();
+  closeBirthdayVideo();
 
 });
+
 
 /* Escape key */
 
 document.addEventListener("keydown", (e) => {
 
-if (!videoLightbox.classList.contains("open")) {
-return;
-}
+  if (!videoLightbox.classList.contains("open")) {
+    return;
+  }
 
-if (e.key === "Escape") {
-closeBirthdayVideo();
-}
+  if (e.key === "Escape") {
+    closeBirthdayVideo();
+  }
 
 });
+
 
 /* =========================
    FOUR BIRTHDAY VIDEOS
