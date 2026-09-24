@@ -244,8 +244,7 @@
   <b class="likes">and somehow... we're still here. ♡</b>
 
   <p>
-    <b>Kanu</b> — here's to all the memories we've already made,
-    and all the completely random ones still waiting for us.
+    <b>Kanupriya piyari priya sundar priya</b> — Between silly reels and serious talks, we’ve found our rhythm… and vibe matches that make me smile. Here’s to more memories, more laughter, and more of us being us. 🫶
   </p>
 </article>
 
@@ -305,6 +304,9 @@
 
       <div id="typed"></div>
 
+
+      <div class="cat-egg" id="catEgg" role="button" tabindex="0" aria-label="Tap the cat">🐱</div>
+
       <div class="sign">
         With lots of good wishes,<br>
         <strong>Himanshu</strong> <span>♥</span>
@@ -318,7 +320,44 @@
 
 
 
+<!-- VIDEO 01 -->
 
+<section class="video-memory-section">
+
+  <p class="eyebrow">A little something · 01</p>
+
+  <button class="open-video" id="birthdayVideoCard">
+    Play my little video
+    <span>♡</span>
+  </button>
+
+</section>
+
+<!-- VIDEO LIGHTBOX -->
+
+<div class="video-lightbox" id="videoLightbox">
+
+<button
+class="video-close"
+id="closeVideo"
+aria-label="Close video"
+
+> ×</button>
+
+  <div class="video-lightbox-content">
+
+
+<video
+  id="birthdayVideo"
+  src="birthday-video.mp4"
+  playsinline
+  controls
+></video>
+
+
+  </div>
+
+</div>
 
 
 
@@ -332,10 +371,59 @@
   </div>
 </section>
 
+<!-- =========================
+     FOUR BIRTHDAY VIDEOS
+     ========================= -->
+
+<div class="birthday-videos">
+
+  <button class="video-open-btn" data-video="vid2.mp4">
+    <span>▶</span>
+    Play Video 1
+  </button>
+
+  <button class="video-open-btn" data-video="vid3.mp4">
+    <span>▶</span>
+    Play Video 2
+  </button>
+
+  <button class="video-open-btn" data-video="vid4.mp4">
+    <span>▶</span>
+    Play Video 3
+  </button>
+
+  <button class="video-open-btn" data-video="vid5.mp4">
+    <span>▶</span>
+    Play Video 4
+  </button>
+
+</div>
+
+
+<!-- VIDEO LIGHTBOX -->
+
+<div class="video-lightbox" id="videoLightbox">
+
+  <button class="video-close" id="videoClose">×</button>
+
+  <div class="video-frame">
+
+    <video
+      id="birthdayVideo"
+      controls
+      playsinline
+      preload="metadata">
+    </video>
+
+  </div>
+
+</div>
+
 <section class="wish" id="wish">
   <div class="wish-copy"><p class="eyebrow">05 · make a wish</p><h2>Close your eyes.<br><i>Wish big.</i></h2><p>Tap every flame. When they're all out, your birthday wish is officially released. ✨</p></div>
   <div class="cake-area">
     <div class="cake">
+      
 
     
     <div class="candles">
@@ -359,6 +447,15 @@
       <div class="icing"></div><div class="cake-top"></div><div class="cake-body"></div><div class="plate"></div>
     </div>
     <p id="cakeStatus">Three little flames are waiting...</p>
+      <!-- video -->
+    <div class="cake-video">
+      <button class="video-open-btn" data-video="funnycake.mp4">
+        <span>▶</span>
+        Play Funny Video
+      </button>
+    </div>
+
+
   </div>
 </section>
 
