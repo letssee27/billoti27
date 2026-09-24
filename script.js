@@ -912,3 +912,478 @@ mobileLinks.forEach(link => {
   });
 
 });
+
+
+/* =========================
+VIDEO MEMORY 01
+========================= */
+
+const birthdayVideoCard =
+document.getElementById("birthdayVideoCard");
+
+const videoLightbox =
+document.getElementById("videoLightbox");
+
+const birthdayVideo =
+document.getElementById("birthdayVideo");
+
+const closeVideo =
+document.getElementById("closeVideo");
+
+/*
+Remember whether background music
+was playing before the video opened.
+*/
+let bgMusicWasPlayingBeforeVideo = false;
+
+/* Open video */
+
+if (birthdayVideoCard) {
+
+birthdayVideoCard.addEventListener("click", () => {
+
+
+/*
+  Remember the current music state.
+  We only resume it if it was actually
+  playing before the video started.
+*/
+bgMusicWasPlayingBeforeVideo = !music.paused;
+
+/* Pause birthday background music */
+if (!music.paused) {
+  music.pause();
+}
+
+/* Open video lightbox */
+videoLightbox.classList.add("open");
+
+document.body.style.overflow = "hidden";
+
+/* Start video from beginning */
+birthdayVideo.currentTime = 0;
+
+birthdayVideo.play().catch(() => {});
+
+
+});
+
+}
+
+/* Close video */
+
+function closeBirthdayVideo() {
+
+/* Stop video */
+birthdayVideo.pause();
+
+birthdayVideo.currentTime = 0;
+
+/* Close lightbox */
+videoLightbox.classList.remove("open");
+
+document.body.style.overflow = "";
+
+/*
+Resume background music only if it was
+playing before the video opened.
+*/
+if (bgMusicWasPlayingBeforeVideo) {
+
+
+music.play().catch(() => {});
+
+
+}
+
+bgMusicWasPlayingBeforeVideo = false;
+
+}
+
+/* Close button */
+
+if (closeVideo) {
+
+closeVideo.addEventListener(
+"click",
+closeBirthdayVideo
+);
+
+}
+
+/* Click outside the video */
+
+if (videoLightbox) {
+
+videoLightbox.addEventListener("click", (e) => {
+
+
+if (e.target === videoLightbox) {
+  closeBirthdayVideo();
+}
+
+
+});
+
+}
+
+/*
+When the video finishes naturally,
+close it and resume background music.
+*/
+
+birthdayVideo.addEventListener("ended", () => {
+
+closeBirthdayVideo();
+
+});
+
+/* Escape key */
+
+document.addEventListener("keydown", (e) => {
+
+if (!videoLightbox.classList.contains("open")) {
+return;
+}
+
+if (e.key === "Escape") {
+closeBirthdayVideo();
+}
+
+});
+
+/* =========================
+   FOUR BIRTHDAY VIDEOS
+   ========================= */
+
+(() => {
+
+  const videoButtons =
+    document.querySelectorAll(".video-open-btn");
+
+  const videoLightbox =
+    document.getElementById("videoLightbox");
+
+  const birthdayVideo =
+    document.getElementById("birthdayVideo");
+
+  const videoClose =
+    document.getElementById("videoClose");
+
+  /* Safety check */
+  if (
+    !videoButtons.length ||
+    !videoLightbox ||
+    !birthdayVideo ||
+    !videoClose
+  ) {
+    return;
+  }
+
+  let bgWasPlaying = false;
+
+
+  /* OPEN VIDEO */
+
+  videoButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const file = button.getAttribute("data-video");
+
+      if (!file) return;
+
+
+      /* Remember background music state */
+
+      bgWasPlaying =
+        typeof music !== "undefined" &&
+        music &&
+        !music.paused;
+
+
+      /* Pause background music */
+
+      if (bgWasPlaying) {
+        music.pause();
+      }
+
+
+      /* Load video */
+
+      birthdayVideo.src = file;
+
+      birthdayVideo.load();
+
+      videoLightbox.classList.add("open");
+
+      document.body.style.overflow = "hidden";
+
+
+      /* Play video */
+
+      birthdayVideo.play().catch(() => {});
+
+    });
+
+  });
+
+
+  /* RESUME BACKGROUND MUSIC */
+
+  function resumeBackground() {
+
+    if (
+      bgWasPlaying &&
+      typeof music !== "undefined" &&
+      music
+    ) {
+
+      music.play().catch(() => {});
+
+    }
+
+    bgWasPlaying = false;
+
+  }
+
+
+  /* CLOSE VIDEO */
+
+  function closeVideo() {
+
+    birthdayVideo.pause();
+
+    birthdayVideo.removeAttribute("src");
+
+    birthdayVideo.load();
+
+    videoLightbox.classList.remove("open");
+
+    document.body.style.overflow = "";
+
+    resumeBackground();
+
+  }
+
+
+  /* VIDEO FINISHED */
+
+  birthdayVideo.addEventListener("ended", () => {
+
+    closeVideo();
+
+  });
+
+
+  /* CLOSE BUTTON */
+
+  videoClose.addEventListener("click", () => {
+
+    closeVideo();
+
+  });
+
+
+  /* CLICK OUTSIDE */
+
+  videoLightbox.addEventListener("click", event => {
+
+    if (event.target === videoLightbox) {
+
+      closeVideo();
+
+    }
+
+  });
+
+
+  /* ESCAPE */
+
+  document.addEventListener("keydown", event => {
+
+    if (
+      event.key === "Escape" &&
+      videoLightbox.classList.contains("open")
+    ) {
+
+      closeVideo();
+
+    }
+
+  });
+
+})();
+
+/* =========================
+   SECRET CAT EGG 🐱
+   ========================= */
+
+const catEgg = document.getElementById("catEgg");
+
+if (catEgg) {
+
+  function catSurprise() {
+
+    /* Bounce the cat */
+
+    catEgg.classList.remove("cat-bounce");
+
+    // Force animation restart
+    void catEgg.offsetWidth;
+
+    catEgg.classList.add("cat-bounce");
+
+
+    /* Secret message */
+
+    const rect = catEgg.getBoundingClientRect();
+
+    const message = document.createElement("div");
+
+    message.className = "cat-message";
+
+    message.textContent = "Meoww..🐱🎂💕";
+
+    message.style.left =
+      `${rect.left + rect.width / 2}px`;
+
+    message.style.top =
+      `${rect.top - 10}px`;
+
+    document.body.appendChild(message);
+
+    setTimeout(() => {
+      message.remove();
+    }, 1000);
+
+
+    /* Little hearts */
+
+    for (let i = 0; i < 7; i++) {
+
+      const heart = document.createElement("span");
+
+      heart.className = "secret-heart";
+
+      heart.textContent =
+        Math.random() > .5 ? "♥" : "♡";
+
+      heart.style.left =
+        `${rect.left + rect.width / 2}px`;
+
+      heart.style.top =
+        `${rect.top + rect.height / 2}px`;
+
+      document.body.appendChild(heart);
+
+
+      heart.animate(
+        [
+          {
+            transform: "translate(-50%, -50%) scale(.5)",
+            opacity: 0
+          },
+          {
+            transform:
+              `translate(${(Math.random() - .5) * 100}px, -${40 + Math.random() * 40}px) scale(1)`,
+            opacity: 1,
+            offset: .3
+          },
+          {
+            transform:
+              `translate(${(Math.random() - .5) * 180}px, -${100 + Math.random() * 100}px) scale(.7)`,
+            opacity: 0
+          }
+        ],
+        {
+          duration: 1100 + Math.random() * 400,
+          easing: "cubic-bezier(.2,.8,.3,1)"
+        }
+      ).onfinish = () => heart.remove();
+
+    }
+
+  }
+
+
+  /* Mouse */
+
+  catEgg.addEventListener("click", catSurprise);
+
+
+  /* Keyboard accessibility */
+
+  catEgg.addEventListener("keydown", (e) => {
+
+    if (e.key === "Enter" || e.key === " ") {
+
+      e.preventDefault();
+
+      catSurprise();
+
+    }
+
+  });
+
+}
+
+
+/* =========================
+   TAP ANYWHERE → FLOATING HEART
+   ========================= */
+
+document.addEventListener("click", (e) => {
+
+  /* Don't interfere with existing interactive elements */
+
+  if (
+    e.target.closest(
+      "button, a, img, video, audio, input, textarea, select, .cat-egg, .lightbox"
+    )
+  ) {
+    return;
+  }
+
+
+  const heart = document.createElement("span");
+
+  heart.className = "secret-heart";
+
+  heart.textContent =
+    Math.random() > .5 ? "♡" : "♥";
+
+  heart.style.left = `${e.clientX}px`;
+  heart.style.top = `${e.clientY}px`;
+
+  heart.style.fontSize =
+    `${12 + Math.random() * 12}px`;
+
+  document.body.appendChild(heart);
+
+
+  heart.animate(
+    [
+      {
+        transform: "translate(-50%, -50%) scale(.5)",
+        opacity: 0
+      },
+      {
+        transform:
+          `translate(${(Math.random() - .5) * 50}px, -45px) scale(1)`,
+        opacity: .9,
+        offset: .25
+      },
+      {
+        transform:
+          `translate(${(Math.random() - .5) * 110}px, -130px) scale(.7)`,
+        opacity: 0
+      }
+    ],
+    {
+      duration: 1100,
+      easing: "cubic-bezier(.2,.8,.3,1)"
+    }
+  ).onfinish = () => heart.remove();
+
+});
