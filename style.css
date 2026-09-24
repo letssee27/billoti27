@@ -1250,3 +1250,540 @@ footer{text-align:center;padding:30px;font-size:10px;letter-spacing:3px;text-tra
   }
 
 }
+
+
+/* =========================
+VIDEO MEMORY 01
+========================= */
+
+.video-memory-section {
+max-width: 650px;
+margin: 0 auto;
+padding: 20px 20px 100px;
+text-align: center;
+}
+
+.video-memory-section .eyebrow {
+margin-bottom: 22px;
+}
+
+/* =========================
+VIDEO BUTTON
+========================= */
+
+.video-memory-section {
+max-width: 650px;
+margin: 0 auto;
+padding: 10px 20px 100px;
+text-align: center;
+}
+
+.video-memory-section .eyebrow {
+margin-bottom: 20px;
+}
+
+.open-video {
+position: relative;
+z-index: 5;
+
+border: 1px solid #e8a9bc;
+background: #fff;
+color: var(--ink);
+
+padding: 13px 22px;
+border-radius: 40px;
+
+font: 600 11px "DM Sans";
+letter-spacing: 1px;
+
+cursor: pointer;
+
+box-shadow: 0 10px 25px #8d3c5910;
+
+transition:
+transform .3s ease,
+background .3s ease,
+color .3s ease,
+box-shadow .3s ease;
+}
+
+.open-video span {
+margin-left: 8px;
+color: var(--hot);
+}
+
+.open-video:hover {
+transform: translateY(-3px);
+background: var(--hot);
+color: #fff;
+box-shadow: 0 15px 30px #8d3c5920;
+}
+
+.open-video:hover span {
+color: #fff;
+}
+
+/* Mobile */
+
+@media (max-width: 750px) {
+
+.video-memory-section {
+padding:
+10px
+20px
+75px;
+}
+
+.open-video {
+padding: 12px 19px;
+}
+
+}
+
+
+/* =========================
+VIDEO LIGHTBOX
+========================= */
+
+.video-lightbox {
+position: fixed;
+inset: 0;
+z-index: 700;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 25px;
+
+background: rgba(32, 16, 22, .94);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+
+transition:
+opacity .35s ease,
+visibility .35s ease;
+}
+
+.video-lightbox.open {
+opacity: 1;
+visibility: visible;
+pointer-events: auto;
+}
+
+.video-lightbox-content {
+position: relative;
+
+width: min(650px, 92vw);
+aspect-ratio: 4 / 5;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+transform: scale(.88);
+transition: transform .4s cubic-bezier(.2,.8,.2,1);
+}
+
+.video-lightbox.open .video-lightbox-content {
+transform: scale(1);
+}
+
+.video-lightbox video {
+width: 100%;
+height: 100%;
+display: block;
+
+object-fit: cover;
+
+border-radius: 8px;
+
+background: #120b0e;
+
+box-shadow: 0 25px 100px #0009;
+}
+
+/* Close button */
+
+.video-close {
+position: absolute;
+
+top: 18px;
+right: 22px;
+
+width: 48px;
+height: 48px;
+
+z-index: 10;
+
+display: grid;
+place-items: center;
+
+border-radius: 50%;
+border: 1px solid #ffffff44;
+
+background: #ffffff18;
+color: #fff;
+
+font-size: 35px;
+line-height: 1;
+
+cursor: pointer;
+
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+
+transition:
+transform .25s ease,
+background .25s ease;
+}
+
+.video-close:hover {
+transform: rotate(90deg) scale(1.08);
+background: var(--hot);
+}
+
+/* Mobile */
+
+@media (max-width: 750px) {
+
+.video-memory-section {
+padding:
+10px
+20px
+75px;
+}
+
+.video-lightbox {
+padding: 15px;
+}
+
+.video-lightbox-content {
+width: min(94vw, 650px);
+aspect-ratio: 4 / 5;
+}
+
+.video-close {
+top: 12px;
+right: 12px;
+width: 44px;
+height: 44px;
+}
+
+}
+
+/* =========================
+   FOUR BIRTHDAY VIDEOS
+   ========================= */
+.birthday-videos {
+  max-width: 900px;
+  margin: 45px auto 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.video-open-btn {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+
+  padding: 14px 16px;
+
+  border: 1px solid #e8a9bc;
+  border-radius: 50px;
+
+  background: #fff;
+  color: var(--ink);
+
+  font: 600 11px "DM Sans";
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px #8d3c5910;
+
+  transition:
+    transform .3s ease,
+    background .3s ease,
+    color .3s ease,
+    box-shadow .3s ease;
+}
+
+.video-open-btn span {
+  color: var(--hot);
+  margin-right: 6px;
+}
+
+.video-open-btn:hover {
+  transform: translateY(-3px);
+  background: var(--hot);
+  color: #fff;
+  box-shadow: 0 15px 30px #8d3c5925;
+}
+
+.video-open-btn:hover span {
+  color: #fff;
+}
+
+
+
+/* =========================
+   VIDEO LIGHTBOX
+   ========================= */
+
+.video-lightbox {
+  position: fixed;
+  inset: 0;
+
+  z-index: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  background: rgba(32, 16, 22, .94);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity .35s ease,
+    visibility .35s ease;
+}
+
+.video-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* Same overall size as memory post */
+
+.video-frame {
+  width: min(650px, 94vw);
+
+  max-height: 88vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  box-shadow: 0 25px 100px #0009;
+
+  transform: scale(.88);
+
+  transition:
+    transform .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.video-lightbox.open .video-frame {
+  transform: scale(1);
+}
+
+
+#birthdayVideo {
+  display: block;
+
+  width: 100%;
+  max-height: 88vh;
+
+  object-fit: contain;
+
+  background: #000;
+}
+
+
+/* Close button */
+
+.video-close {
+  position: absolute;
+
+  top: 18px;
+  right: 22px;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  border: 1px solid #ffffff44;
+
+  background: #ffffff18;
+
+  color: #fff;
+
+  font-size: 35px;
+  line-height: 1;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+}
+
+.video-close:hover {
+  transform: rotate(90deg) scale(1.08);
+  background: var(--hot);
+}
+
+
+/* Mobile */
+
+@media(max-width:750px) {
+.birthday-videos {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.video-open-btn {
+  flex: 0 0 calc(50% - 5px);
+  padding: 12px 8px;
+  font-size: 9px;
+}
+  .video-lightbox {
+    padding: 55px 15px;
+  }
+
+  .video-frame {
+    width: 94vw;
+    max-height: 82vh;
+  }
+
+  #birthdayVideo {
+    max-height: 82vh;
+  }
+
+  .video-close {
+    top: 12px;
+    right: 12px;
+  }
+
+}
+
+
+.cake-video {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.cake-video .video-open-btn {
+  flex: none;
+  width: auto;
+  padding: 13px 22px;
+}
+
+/* =========================
+   SECRET CAT EGG 🐱
+   ========================= */
+
+.cat-egg {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 28px;
+  position: relative;
+  transition: transform .25s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cat-egg:hover {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.cat-egg.cat-bounce {
+  animation: catBounce .7s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes catBounce {
+  0%   { transform: scale(1) rotate(0); }
+  25%  { transform: scale(1.35) rotate(-8deg); }
+  50%  { transform: scale(.9) rotate(8deg); }
+  75%  { transform: scale(1.15) rotate(-4deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* Secret cat message */
+
+.cat-message {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  color: var(--hot);
+  background: #fff;
+  border: 1px solid #f1cbd8;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 30px #8d3c5918;
+  animation: catMessage .9s ease forwards;
+}
+
+@keyframes catMessage {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px) scale(.8);
+  }
+
+  25% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -35px) scale(.95);
+  }
+}
+
+/* Tiny secret particles */
+
+.secret-heart {
+  position: fixed;
+  z-index: 999;
+  pointer-events: none;
+  color: var(--hot);
+  font-size: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cat-egg.cat-bounce {
+    animation: none;
+  }
+
+  .cat-message,
+  .secret-heart {
+    animation: none;
+  }
+}
