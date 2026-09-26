@@ -1704,7 +1704,10 @@ height: 44px;
    ========================= */
 
 .cat-egg {
-  display: inline-block;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+
   cursor: pointer;
   font-size: 28px;
   position: relative;
@@ -1786,4 +1789,15 @@ height: 44px;
   .secret-heart {
     animation: none;
   }
+}
+
+.cat-egg + h6 {
+  margin: 6px 0 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #b47b91;
+  text-align:center;
+  opacity: 0.85;
 }
