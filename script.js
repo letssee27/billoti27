@@ -1402,3 +1402,26 @@ document.addEventListener("click", (e) => {
   ).onfinish = () => heart.remove();
 
 });
+
+/* =========================
+   CAT VIDEO SURPRISE 🐱🎬
+   ========================= */
+
+const catVideoTrigger =
+  document.querySelector(".cat-video-trigger");
+
+if (catVideoTrigger) {
+
+  catVideoTrigger.addEventListener("keydown", (e) => {
+
+    if (e.key === "Enter" || e.key === " ") {
+
+      e.preventDefault();
+
+      catVideoTrigger.click();
+
+    }
+
+  });
+
+}
