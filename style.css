@@ -1801,3 +1801,58 @@ height: 44px;
   text-align:center;
   opacity: 0.85;
 }
+
+/* =========================
+   CAT VIDEO SURPRISE
+   ========================= */
+
+.cat-video-section {
+  text-align: center;
+  margin: 45px auto 25px;
+  position: relative;
+  z-index: 5;
+}
+
+.cat-video-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 90px;
+  height: 90px;
+
+  font-size: 52px;
+  cursor: pointer;
+
+  transition:
+    transform .3s ease,
+    filter .3s ease;
+
+  animation: catVideoFloat 3s ease-in-out infinite;
+}
+
+.cat-video-trigger:hover {
+  transform: scale(1.12);
+  filter: drop-shadow(0 8px 18px rgba(232, 78, 131, .35));
+}
+
+.cat-video-trigger:active {
+  transform: scale(.92);
+}
+
+.cat-video-hint {
+  margin-top: 10px;
+  color: #c86b8c;
+  font-size: 14px;
+  opacity: .8;
+}
+
+@keyframes catVideoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
